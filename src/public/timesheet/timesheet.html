@@ -1,0 +1,60 @@
+<div class="container">
+  <h2 class="text-center">
+    Timesheet
+  </h2>
+  <div class="text-center">
+    <fieldset>
+      <form name='tsForm' novalidate>
+
+        <input class="form-control" type="text" name="firstname" placeholder="Enter your first name"
+          ng-model="tsCtrl.firstname"
+          required>
+          <span
+            ng-if="(tsForm.firstname.$error.required) && tsForm.firstname.$touched">
+            First name must be entered
+          </span>
+          <br>
+
+          <input class="form-control" type="text" name="lastname" placeholder="Enter your last name"
+            ng-model="tsCtrl.lastname"
+            required>
+            <span
+              ng-if="(tsForm.lastname.$error.required) && tsForm.lastname.$touched">
+              Last name must be entered
+            </span>
+            <br>
+
+        <input class="form-control" type="email" name="email" placeholder="Email"
+          ng-model="tsCtrl.email"
+          required>
+          <span ng-if="tsForm.email.$invalid && tsForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+
+        <input class="form-control" type="text" name="startdate" placeholder="Start Date DD-MM-YYYY"
+          ng-model="tsCtrl.startdate"
+          pattern="(\d{2})-(\d{2})-(\d{4})"
+          required>
+          <span ng-if="tsForm.startdate.$invalid && tsForm.startdate.$touched">
+            The date must be in the format DD-MM-YYYY.
+          </span>
+          <br>
+
+
+        <button class="btn btn-primary"
+          ng-disabled="tsForm.$invalid"
+          ng-click="tsCtrl.saveTs();">Create Timesheet</button>
+          <br>
+      </form>
+    </fieldset>
+<br>
+<br>
+<div class="alert alert-success" ng-if="tsCtrl.completed">
+  <span>
+    Your information has been saved.
+  </span>
+</div>
+
+</div>
+</div>
