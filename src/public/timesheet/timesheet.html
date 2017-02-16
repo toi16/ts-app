@@ -32,9 +32,8 @@
           </span>
           <br>
 
-        <input class="form-control" type="text" name="startdate" placeholder="Start Date DD-MM-YYYY"
+        <input class="form-control" type="date" name="startdate" placeholder="Start Date DD-MM-YYYY"
           ng-model="tsCtrl.startdate"
-          pattern="(\d{2})-(\d{2})-(\d{4})"
           required>
           <span ng-if="tsForm.startdate.$invalid && tsForm.startdate.$touched">
             The date must be in the format DD-MM-YYYY.

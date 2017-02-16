@@ -31,17 +31,20 @@ function routeConfig ($stateProvider) {
       templateUrl: 'src/public/timesheet-display/timesheet-display.html',
       controller: 'TimesheetDisplayController',
       controllerAs: 'tsDCtrl'
-  
+
     })
-    // .state('public.myinfo', {
-    //   url: '/myinfo',
-    //   templateUrl: 'src/public/my-info/my-info.html',
-    //   controller: 'MyInfoController',
-    //   controllerAs: 'myInfo',
-    //   resolve: {
-    //
-    //   }
-    // })
+    .state('public.timesheetEdit', {
+      url: '/timesheetEdit',
+      templateUrl: 'src/public/timesheet-edit/timesheet-edit.html',
+      controller: 'TimesheetEditController',
+      controllerAs: 'tsECtrl',
+      resolve: {
+        mainTs: ['$stateParams','TimesheetService', function ($stateParams, TimesheetService) {
+          return TimesheetService.getTimesheet($stateParams);
+        
+        }]
+      }
+    })
     // .state('public.signup', {
     //   url: '/signup',
     //   templateUrl: 'src/public/sign-up/sign-up.html',

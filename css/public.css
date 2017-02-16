@@ -4,6 +4,11 @@
 
 }
 
+.label {
+  float: left;
+  display: inline-flex;
+}
+
 #ts-tile {
   height: 100px;
   width: 100%;

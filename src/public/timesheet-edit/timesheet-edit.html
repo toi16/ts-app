@@ -1,0 +1,150 @@
+<div class="container">
+  <h2 class="text-center">Timesheet Edit</h2>
+  <div>
+    <div>
+      <ul class="list-group">
+       <li ng-repeat="item in tsECtrl.timesheetData">
+         Name: {{tsECtrl.timesheetData[0].firstname}} {{item.lastname}} Email: {{item.email}} Start Date: {{item.startdate}}
+
+       </li>
+     </ul>
+
+     <div>
+       <fieldset>
+         <form name='tsEditForm' novalidate>
+        <label>Monday {{tsECtrl.date1}}</label>
+        <input class="form-control" type="time" name="monday"
+             ng-model=""
+             required>
+             <span
+               ng-if="(tsEditForm.monday.$error.required) && tsEditForm.monday.$touched">
+               First name must be entered
+             </span>
+             <br>
+<label>Tuesday {{tsECtrl.date2}}</label>
+             <input class="form-control" type="text" name="lastname" placeholder="Enter your last name"
+               ng-model="tsCtrl.lastname"
+               required>
+               <span
+                 ng-if="(tsForm.lastname.$error.required) && tsForm.lastname.$touched">
+                 Last name must be entered
+               </span>
+               <br>
+
+           <input class="form-control" type="email" name="email" placeholder="Email"
+             ng-model="tsCtrl.email"
+             required>
+             <span ng-if="tsForm.email.$invalid && tsForm.email.$touched">
+               Must be a valid email address: handle@domain format
+             </span>
+             <br>
+
+           <input class="form-control" type="date" name="startdate" placeholder="Start Date DD-MM-YYYY"
+             ng-model="tsCtrl.startdate"
+             required>
+             <span ng-if="tsForm.startdate.$invalid && tsForm.startdate.$touched">
+               The date must be in the format DD-MM-YYYY.
+             </span>
+             <br>
+
+
+           <button class="btn btn-primary"
+             ng-disabled="tsForm.$invalid"
+             ng-click="tsCtrl.saveTs();">Create Timesheet</button>
+             <br>
+         </form>
+       </fieldset>
+     <br>
+     <br>
+     <div class="alert alert-success" ng-if="tsCtrl.completed">
+     <span>
+       Your information has been saved.
+     </span>
+     </div>
+
+     </div>
+
+
+
+
+<div>
+  <h2>Timesheet for {{::tsECtrl.timesheetData[0].firstname}} {{::tsECtrl.timesheetData[0].lastname}}, Week Ending:</h2>
+    <button class="btn btn-primary" name="button"><i class="glyphicon glyphicon-triangle-left"></i></button>
+    <label>Monday {{tsECtrl.date1}}</label>
+    <button class="btn btn-primary" name="button"><i class="glyphicon glyphicon-triangle-right"></i></button>
+</div>
+
+     <div class = "table-responsive">
+        <table class = "table table-bordered">
+
+           <caption>Enter your Timesheet Details</caption>
+
+           <thead>
+              <tr>
+                 <th>Day</th>
+                 <th>Start Time - End Time</th>
+                 <th>Duration</th>
+                 <th>Work Type</th>
+                 <th>Location</th>
+                 <th></th>
+              </tr>
+           </thead>
+
+           <tbody>
+              <tr>
+                <td><select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+
+              </td>
+                 <td><input class="form-control form-inline" type="text" name="day"
+                      ng-model=""
+                      required> -
+                      <input class="form-control form-inline" type="text" name="day"
+                           ng-model=""
+                           required>
+                           </td>
+
+                 <td>0h 0m</td>
+                 <td><select class="form-control">
+                     <option>Type 1</option>
+                     <option>Type 2</option>
+                     <option>Type 3</option>
+                     <option>Type 4</option>
+                     <option>Type 5</option>
+                   </select></td>
+                 <td><select class="form-control">
+                     <option>Site 1</option>
+                     <option>Site 2</option>
+                     <option>Site 3</option>
+                     <option>Site 4</option>
+                     <option>Site 5</option>
+                   </select></td>
+                 <td> <button class="btn btn-primary"
+                    ng-disabled="tsForm.$invalid"
+                    ng-click="tsCtrl.saveTs();">Save</button>
+                 </td>
+              </tr>
+              <tr>
+                <td colspan="6"><h3>Entered Timesheets</h3></td>
+              </tr>
+              <tr>
+                 <td>Mon 11 Mar</td>
+                 <td>7.00 AM - 5.00 PM</td>
+                 <td>7h 0m</td>
+                 <td>site - standard hours</td>
+                 <td>Devon</td>
+                 <td><span class="label label-default">Submitted</span></td>
+              </tr>
+           </tbody>
+
+        </table>
+     </div>
+
+    </div>
+  </div>
+</div>
